@@ -1,0 +1,58 @@
+name: news_app
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: ^3.7.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Add this for localization
+  easy_localization: ^3.0.3
+  flutter_localizations:
+    sdk: flutter
+
+  # Add other essential packages as needed
+  dio: 
+  cupertino_icons:
+  flutter_bloc: 
+  hive: 
+  hive_flutter: 
+  equatable: 
+  cached_network_image: 
+  flutter_screenutil:
+  get_it:
+  flutter_dotenv:
+  dot_navigation_bar: ^1.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints:
+  build_runner: 
+  hive_generator: 
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/lang/
+    # - assets/images/
+    - assets/fonts/
+    - .env
+  
+  fonts:
+    - family: Telegraf
+      fonts:
+        - asset: assets/fonts/Telegraf/Telegraf-UltraLight.otf
+          weight: 100
+        - asset: assets/fonts/Telegraf/Telegraf-Regular.otf
+          weight: 400
+        - asset: assets/fonts/Telegraf/Telegraf-UltraBold.otf
+          weight: 800
+        - asset: assets/fonts/Telegraf/Telegraf-UltraBold.otf
+          weight: 900
+

@@ -1,0 +1,50 @@
+import 'dart:async';
+import 'package:dio/dio.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:news_app/core/netwrok/api_consumer.dart';
+import 'package:news_app/core/netwrok/interceptors.dart';
+
+class DioConsumer implements ApiConsumer {
+  final  baseurl =dotenv.env['BASE_URL'];
+  DioConsumer({required this.client}) {
+    client.options
+      ..baseUrl = baseurl!
+      ..responseType = ResponseType.json
+      ..connectTimeout = const Duration(seconds: 15)
+      ..receiveTimeout = const Duration(seconds: 15);
+
+    client.interceptors.add(AppInterceptors());
+  }
+  final Dio client;
+
+  @override
+  Future<dynamic> get(
+    String path, {
+    Map<String, dynamic>? queryParameters,
+  }) async {
+    try {
+      final response = await client.get(path, queryParameters: queryParameters);
+      return response.data;
+    } on DioException catch (error) {
+      throw _handleDioError(error);
+    }
+  }
+
+  Exception _handleDioError(DioException error) {
+    switch (error.type) {
+      case DioExceptionType.connectionTimeout:
+      case DioExceptionType.sendTimeout:
+      case DioExceptionType.receiveTimeout:
+        return TimeoutException('Connection timed out');
+      case DioExceptionType.badResponse:
+        return Exception('Server error: ${error.response?.statusCode}');
+      case DioExceptionType.cancel:
+        return Exception('Request cancelled');
+      case DioExceptionType.connectionError:
+        return Exception('No internet connection');
+      case DioExceptionType.unknown:
+      default:
+        return Exception('Unexpected error: ${error.message}');
+    }
+  }
+}

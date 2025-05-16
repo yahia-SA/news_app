@@ -1,0 +1,37 @@
+import 'package:flutter/material.dart';
+import 'package:news_app/core/routing/routes.dart';
+import 'package:news_app/features/news/presentation/pages/home_page.dart';
+import 'package:news_app/features/news/presentation/widgets/custom_bottom_nav.dart';
+
+class AppRouter {
+  Route? onGenerateRoute(RouteSettings settings) {
+    switch (settings.name) {
+      case Routes.bottomnav:
+        return _createRoute(const BottomNavigation());
+        
+      case Routes.news:
+        return _createRoute(Container());
+        case Routes.home:
+        return _createRoute(const HomePage());
+        case Routes.search:
+        return _createRoute(Container());
+        case Routes.bookmarks:
+        return _createRoute(Container());
+        
+      default:
+        return null;
+    }
+  }
+}
+  PageRouteBuilder _createRoute(Widget page) {
+    return PageRouteBuilder(
+      transitionDuration: const Duration(milliseconds: 500),
+      pageBuilder: (context, animation, secondaryAnimation) => page,
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        return FadeTransition(
+          opacity: animation,
+          child: child,
+        );
+      },
+    );
+  }
