@@ -4,17 +4,13 @@ import 'package:news_app/features/news/domain/entities/article_entity.dart';
 
 class RemoteDataSource {
   final ApiConsumer apiConsumer;
-  final String apiKey ;
-  RemoteDataSource({required this.apiConsumer,required this.apiKey});
+  RemoteDataSource({required this.apiConsumer});
 
   Future<List<Article>> fetchNewsByQuery(String query) async {
     final response = await apiConsumer.get(
       'everything',
       queryParameters: {
         'q': query,
-        'from': '2025-04-20',
-        'sortBy': 'publishedAt',
-        'apiKey': apiKey,
       }
         );
 
@@ -28,9 +24,6 @@ class RemoteDataSource {
       'everything',
       queryParameters: {
         'q' : 'latest',
-        'from': '2025-05-01',
-        'sortBy': 'publishedAt',
-        'apiKey': apiKey,
       },
     );
     return (response['articles'] as List)

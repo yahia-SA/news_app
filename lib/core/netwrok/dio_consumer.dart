@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:news_app/core/netwrok/api_consumer.dart';
@@ -6,6 +7,7 @@ import 'package:news_app/core/netwrok/interceptors.dart';
 
 class DioConsumer implements ApiConsumer {
   final  baseurl =dotenv.env['BASE_URL'];
+  final String apikey =dotenv.env['API_KEY'].toString();
   DioConsumer({required this.client}) {
     client.options
       ..baseUrl = baseurl!
@@ -19,11 +21,21 @@ class DioConsumer implements ApiConsumer {
 
   @override
   Future<dynamic> get(
-    String path, {
+    String path ,{
     Map<String, dynamic>? queryParameters,
   }) async {
     try {
-      final response = await client.get(path, queryParameters: queryParameters);
+      final updatedQueryParameters = {
+        'apiKey': apikey,
+        'from': '2025-05-04',
+        'sortBy': 'publishedAt',
+        ...?queryParameters,
+      };
+          final uri = Uri.parse('${client.options.baseUrl}$path')
+        .replace(queryParameters: updatedQueryParameters);
+        log('📡 [GET] Requesting URL: $uri'); // 👈 logs full URL
+
+      final response = await client.get(path, queryParameters: updatedQueryParameters);
       return response.data;
     } on DioException catch (error) {
       throw _handleDioError(error);

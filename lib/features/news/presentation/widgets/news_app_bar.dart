@@ -10,7 +10,7 @@ class NewsAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.transparent,
+      backgroundColor: AppColors.backgroundColor,
       elevation: 0.0,
       leading: Icon(
         CupertinoIcons.line_horizontal_3_decrease_circle_fill,

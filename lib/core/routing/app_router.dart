@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/core/routing/routes.dart';
+import 'package:news_app/features/news/domain/entities/article_entity.dart';
 import 'package:news_app/features/news/presentation/pages/home_page.dart';
+import 'package:news_app/features/news/presentation/pages/news_page.dart';
 import 'package:news_app/features/news/presentation/widgets/custom_bottom_nav.dart';
 
 class AppRouter {
@@ -10,7 +12,8 @@ class AppRouter {
         return _createRoute(const BottomNavigation());
         
       case Routes.news:
-        return _createRoute(Container());
+              final article = settings.arguments as Article;
+        return _createRoute( NewsPage(article: article,));
         case Routes.home:
         return _createRoute(const HomePage());
         case Routes.search:
