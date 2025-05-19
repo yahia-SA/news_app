@@ -1,7 +1,18 @@
 {
-  "app_title": "News App",
-  "search": "Search",
-  "bookmarks": "Bookmarks",
-  "no_results": "No articles found.",
-  "retry": "Retry"
+  "app_title": "تطبيق الأخبار",
+  "News": "الأخبار",
+  "App": "تطبيق",
+  "Videos": "الفيديوهات",
+  "search": "بحث",
+  "latest_News": "احدث الأخبار",
+  "bookmarks": "الإشارات المرجعية",
+  "no_results": "لم يتم العثور على مقالات.",
+  "retry": "إعادة المحاولة",
+  "latest_bookmarks": "أحدث الإشارات المرجعية",
+  "add_to_bookmarks": "اضافة للإشارات المرجعية",
+  "remove_from_bookmarks": "حذف من الإشارات المرجعية",
+  "collections": "مجموعات",
+  "error":"حدث خطأ ، يرجى المحاولة مرة اخرى",
+  "open_video": "افتح الفيديو",
+  "no_bookmarks": "لا يوجد اشارات مرجعية"
 }

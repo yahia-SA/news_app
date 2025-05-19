@@ -1,7 +1,18 @@
 {
   "app_title": "News App",
+  "news": "News",
+  "Videos": "Videos",
+  "app": "App",
   "search": "Search",
+  "latest_News": "Latest News",
   "bookmarks": "Bookmarks",
   "no_results": "No articles found.",
-  "retry": "Retry"
+  "retry": "Retry",
+  "latest_bookmarks": "Latest Bookmarks",
+  "add_to_bookmarks": "Add to Bookmarks",
+  "remove_from_bookmarks": "Remove from Bookmarks",
+  "collections": "Collections",
+  "error":"Something went wrong, please try again",
+  "open_video": "Open Video",
+  "no_bookmarks": "No Bookmarks"
 }
