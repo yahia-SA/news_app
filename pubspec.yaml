@@ -27,7 +27,8 @@ dependencies:
   get_it:
   flutter_dotenv:
   dot_navigation_bar: ^1.0.2
-
+  intl: ^0.19.0
+  url_launcher: ^6.3.1
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -40,7 +41,7 @@ flutter:
 
   assets:
     - assets/lang/
-    # - assets/images/
+    - assets/images/
     - assets/fonts/
     - .env
   
