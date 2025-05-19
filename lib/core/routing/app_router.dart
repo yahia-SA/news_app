@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/core/routing/routes.dart';
 import 'package:news_app/features/news/domain/entities/article_entity.dart';
+import 'package:news_app/features/news/presentation/pages/bookmarks_page.dart';
 import 'package:news_app/features/news/presentation/pages/home_page.dart';
 import 'package:news_app/features/news/presentation/pages/news_page.dart';
+import 'package:news_app/features/news/presentation/pages/search_page.dart';
 import 'package:news_app/features/news/presentation/widgets/custom_bottom_nav.dart';
 
 class AppRouter {
@@ -17,10 +19,9 @@ class AppRouter {
         case Routes.home:
         return _createRoute(const HomePage());
         case Routes.search:
-        return _createRoute(Container());
+        return _createRoute(SearchPage());
         case Routes.bookmarks:
-        return _createRoute(Container());
-        
+        return _createRoute(BookmarksPage());        
       default:
         return null;
     }
