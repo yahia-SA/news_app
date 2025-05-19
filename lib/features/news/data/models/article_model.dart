@@ -64,6 +64,15 @@ class ArticleModel extends Article {
       author: json['author'],
     );
   }
+  factory ArticleModel.fromEntity(Article article) => ArticleModel(
+    title: article.title ?? 'No Title',
+    description: article.description,
+    url: article.url ?? 'No URL',
+    urlToImage: article.urlToImage ?? 'No Image',
+    publishedAt: article.publishedAt ?? DateTime.now().toString(),
+    sourceName: article.sourceName,
+    author: article.author,
+  );
 
   Map<String, dynamic> toJson() {
     return {
