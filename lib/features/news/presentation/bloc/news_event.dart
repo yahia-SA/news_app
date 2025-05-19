@@ -16,8 +16,31 @@ class SearchNews extends NewsEvent {
 
 class GetSavedArticles extends NewsEvent {}
 
-class GetAllNews extends NewsEvent {
-  const GetAllNews();
+class GetAllNews extends NewsEvent {}
+// Bookmark Events
+class AddBookmark extends NewsEvent {
+  final ArticleModel article;
+
+  const AddBookmark(this.article);
+
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [article];
+}
+
+class RemoveBookmark extends NewsEvent {
+  final String title;
+
+  const RemoveBookmark(this.title);
+
+  @override
+  List<Object?> get props => [title];
+}
+
+class CheckBookmarkStatus extends NewsEvent {
+  final String title;
+
+  const CheckBookmarkStatus(this.title);
+
+  @override
+  List<Object?> get props => [title];
 }
