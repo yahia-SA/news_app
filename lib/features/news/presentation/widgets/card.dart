@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/core/constants/app_constants.dart';
 import 'package:news_app/core/extensions/sizedbox_extensions.dart';
+import 'package:news_app/core/routing/navigator_services.dart';
+import 'package:news_app/core/routing/routes.dart';
 import 'package:news_app/core/themes/app_colors.dart';
 import 'package:news_app/core/themes/app_text.dart';
 import 'package:news_app/features/news/domain/entities/article_entity.dart';
@@ -12,22 +14,22 @@ class NewsCard extends StatelessWidget {
   const NewsCard({
     super.key,
     required this.article,
+    required this.isBookmarked,
     this.onCommentTap,
     this.onShareTap,
     this.onBookmarkTap,
-    this.onTap,
   });
 
   final Article article;
+  final bool isBookmarked;
   final VoidCallback? onCommentTap;
   final VoidCallback? onShareTap;
   final VoidCallback? onBookmarkTap;
-  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: ()=>NavigationService.pushNamed(Routes.news,arguments: article),
       child: Card(
         elevation: 4,
         margin: EdgeInsets.symmetric(vertical: 8.h, horizontal: 8.w),
@@ -110,7 +112,7 @@ class NewsCard extends StatelessWidget {
                         ),
                         IconButton(
                           icon: Icon(
-                            CupertinoIcons.bookmark,
+                            isBookmarked ? CupertinoIcons.bookmark_fill : CupertinoIcons.bookmark,
                             color: Colors.white,
                           ),
                           onPressed: onBookmarkTap,

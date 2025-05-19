@@ -2,22 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:news_app/core/extensions/sizedbox_extensions.dart';
+import 'package:news_app/core/routing/navigator_services.dart';
+import 'package:news_app/core/routing/routes.dart';
 import 'package:news_app/core/themes/app_colors.dart';
 import 'package:news_app/core/themes/app_text.dart';
 import 'package:news_app/features/news/domain/entities/article_entity.dart';
 
 class NewsItem extends StatelessWidget {
   final Article article;
-  final VoidCallback? onTap;
-  const NewsItem({super.key, required this.article, this.onTap});
+  const NewsItem({super.key, required this.article,});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: ()=>NavigationService.pushNamed(Routes.news,arguments: article),
       child: Card(
         elevation: 0,
         color: AppColors.backgroundColor,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,

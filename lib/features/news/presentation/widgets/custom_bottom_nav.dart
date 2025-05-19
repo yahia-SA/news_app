@@ -17,7 +17,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
   final List<Widget> _screens = [
     const HomePage(),
     const BookmarksPage(),
-    const SearchPage(),
+     SearchPage(),
     const Center(child:  Text('Notifications')),
     const Center(child:  Text('Settings')),
   ];
